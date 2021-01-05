@@ -7,10 +7,19 @@ public class PigLatin {
       while (in.hasNextLine()) {
         Scanner n = new Scanner(in.nextLine()) ;
         while (n.hasNext()) {
-          String temp = n.next() ;
+          String temp = n.next().toLowerCase() ;
           String returnValue = temp ;
-          if (!(((temp.charAt(0)+"").equals("a")) || ((temp.charAt(0)+"").equals("e")) || ((temp.charAt(0)+"").equals("i"))
-          || ((temp.charAt(0)+"").equals("o")) || ((temp.charAt(0)+"").equals("u")))) {
+          String[] vowels = {"a","e","i","o","u"};
+          boolean vowelCheck = false ;
+          for (int i=0; i<5; i++) {
+            if (vowels[i].equals(temp.charAt(0)+"")) {
+              vowelCheck = true ;
+            }
+          }
+          if (vowelCheck) {
+            returnValue = returnValue + "hay" ;
+          }
+          else {
             returnValue = "" ;
             for (int i=1; i<temp.length(); i++) {
               returnValue = returnValue + temp.charAt(i) ;
